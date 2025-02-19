@@ -21,5 +21,16 @@ public class Banco {
                 c.depositar(1000);
             }
         }
+    }
+    public void tentarSacar(double v){
+        for (Conta c: contas){ c.sacar(v);}
+    }
+    public void aumentrLimiteEspeciais(double v){
+        for (Conta c: contas){
+            if (c instanceof ContaEspecial){
+                ContaEspecial e = (ContaEspecial) c;
+                e.aumentar(v);
+            }
+        }
     }       
 }
