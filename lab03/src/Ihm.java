@@ -6,7 +6,7 @@ public class Ihm {
     private Scanner entrada = new Scanner(System.in);
 
     public Ihm(GerenciadorNomes g) {
-        grenciador = g;
+        gerenciador = g;
     }
 
     public void dialogar() {
@@ -32,7 +32,7 @@ public class Ihm {
                     out.println("Opção inválida");
             }
         }
-        out.print.ln("Fim do programa!");
+        out.println("Fim do programa!");
     }
 
     private void listar() {
@@ -46,6 +46,6 @@ public class Ihm {
     private void adicionar() {
         out.print("\n>> Digite o novo nome: ");
         String novoNome = entrada.nextLine();
-        gerenciador.adicionarNome(novoNome);
+        gerenciador.adicionarNomes(novoNome);
     }
 }
