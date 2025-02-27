@@ -1,21 +1,34 @@
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class GerenciadorNomesArq {
 
-    public static void main(String[] args) {
+	public static void leitor(String path) throws IOException {
+		BufferedReader buffRead = new BufferedReader(new FileReader(path));
+		String linha = "";
+		while (true) {
+			if (linha != null) {
+				System.out.println(linha);
 
-        Path path = Paths.get("D:/data/Nomes.txt");
-        try {
-            byte[] bs = Files.readAllBytes(path);
-            List<String> strings = Files.readAllLines(path);
+			} else
+				break;
+			linha = buffRead.readLine();
+		}
+		buffRead.close();
+	}
 
-            System.out.println("Read bytes: \n" + new String(bs));
-            System.out.println("Read lines: \n" + strings);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+	public static void escritor(String path) throws IOException {
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
+		String linha = "";
+		Scanner in = new Scanner(System.in);
+		System.out.println("Escreva um nome: ");
+		linha = in.nextLine();
+		buffWrite.append(linha + "\n");
+		buffWrite.close();
+	}
+
 }
