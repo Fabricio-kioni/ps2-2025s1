@@ -1,34 +1,48 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
-public class GerenciadorNomesArq {
+public class GerenciadorNomesArq implements GerenciadorNomes {
 
-	public static void leitor(String path) throws IOException {
-		BufferedReader buffRead = new BufferedReader(new FileReader(path));
-		String linha = "";
-		while (true) {
-			if (linha != null) {
-				System.out.println(linha);
+	@Override
+	public List<String> obterNomes() {
+		List<String> nomes = new ArrayList<String>();
+		try {
+			FileReader arq = new FileReader("Nomes.txt");
+			BufferedReader lerArq = new BufferedReader(arq);
+			String linha = lerArq.readLine();
 
-			} else
-				break;
-			linha = buffRead.readLine();
+			while (linha != null) {
+				nomes.add(linha);
+				linha = lerArq.readLine();
+			}
+			lerArq.close();
+
+		} catch (IOException e) {
+			System.out.println("Erro ao tentar ler o arquivo");
+			e.getMessage();
 		}
-		buffRead.close();
+		return nomes;
 	}
 
-	public static void escritor(String path) throws IOException {
-		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(path));
-		String linha = "";
-		Scanner in = new Scanner(System.in);
-		System.out.println("Escreva um nome: ");
-		linha = in.nextLine();
-		buffWrite.append(linha + "\n");
-		buffWrite.close();
+	@Override
+	public void adicionarNome(String nome) {
+		Path arq = Paths.get("arquivo.txt");
+		try {
+			Files.writeString(arq, nome + System.lineSeparator(), StandardOpenOption.APPEND);
+			System.out.println("Nome add com sucesso!\n");
+
+		} catch (IOException e) {
+			System.out.println("Erro ao tentar escrever no arquivo");
+			e.printStackTrace();
+		}
 	}
 
+	@Override
+	public void adicionarNomes(String nome) {
+		throw new UnsupportedOperationException("Unimplemented method 'adicionarNomes'");
+	}
 }
