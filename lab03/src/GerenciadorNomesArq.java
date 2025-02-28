@@ -29,7 +29,7 @@ public class GerenciadorNomesArq implements GerenciadorNomes {
 	}
 
 	@Override
-	public void adicionarNome(String nome) {
+	public void adicionarNomes(String nome) {
 		Path arq = Paths.get("arquivo.txt");
 		try {
 			Files.writeString(arq, nome + System.lineSeparator(), StandardOpenOption.APPEND);
