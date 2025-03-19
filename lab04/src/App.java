@@ -57,8 +57,7 @@ public class App {
     }
 
     public static void main(String[] args) throws Exception {
-        String url = "jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:6543/postgres?user=postgres.liatrwnubozsmibmhapc&password=dataF341hype
-";
+        String url = "jdbc:postgresql://aws-0-sa-east-1.pooler.supabase.com:6543/postgres?user=postgres.liatrwnubozsmibmhapc&password=dataF341hype";
         objDados = new ObjetoDados(url);
         boolean sair = false;
         while (!sair) {
