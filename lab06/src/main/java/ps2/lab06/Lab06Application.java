@@ -49,13 +49,11 @@ public class Lab06Application implements CommandLineRunner {
         System.out.println("Faculdade cadastrada com sucesso!");
     }
     private void listarFaculdades(FaculdadeRepo faculdadeRepo) {
-        List<Faculdade> faculdades = faculdadeRepo.findAll();
-        
+        Iterable<Faculdade> faculdades = faculdadeRepo.findAll();
         if (faculdades.isEmpty()) {
             System.out.println("Não há faculdades cadastradas.");
             return;
         }
-        
         System.out.println("\nLista de Faculdades:");
         System.out.printf("%-5s %-30s %-15s%n", "ID", "NOME", "ANO FUNDAÇÃO");
         
@@ -76,7 +74,7 @@ public class Lab06Application implements CommandLineRunner {
         System.out.print("Matrícula do novo professor: ");
         int matricula = Integer.parseInt(entrada.nextLine());
         
-        List<Faculdade> faculdades = faculdadeRepo.findAll();
+        Iterable<Faculdade> faculdades = faculdadeRepo.findAll();
         
         if (faculdades.isEmpty()) {
             System.out.println("Não há faculdades cadastradas. Cadastre uma faculdade primeiro.");
@@ -97,7 +95,6 @@ public class Lab06Application implements CommandLineRunner {
         }
         
         Faculdade faculdadeEscolhida = faculdades.get(faculdadeIndex - 1);
-        
         Professor professor = new Professor(nome, cpf, matricula);
         professor.setFaculdade(faculdadeEscolhida);
         professorRepo.save(professor);
@@ -106,8 +103,7 @@ public class Lab06Application implements CommandLineRunner {
     }
     
     private void listarProfessores(ProfessorRepo professorRepo) {
-        List<Professor> professores = professorRepo.findAll();
-        
+        Iterable<Professor> professores = professorRepo.findAll();
         if (professores.isEmpty()) {
             System.out.println("Não há professores cadastrados.");
             return;
