@@ -9,7 +9,6 @@ public class Lab06Application implements CommandLineRunner {
     public static void main (String[] args){
         SpringApplication.run(Lab06Application.class, args);
     }
-
     @Override
 	public void run(String... args) {
 		System.out.println("# Gerenciador de Professores e Faculdades!");
@@ -103,7 +102,7 @@ public class Lab06Application implements CommandLineRunner {
         professor.setFaculdade(faculdadeEscolhida);
         professorRepo.save(professor);
         
-        out.println("Professor cadastrado com sucesso!");
+        System.out.println("Professor cadastrado com sucesso!");
     }
     
     private void listarProfessores(ProfessorRepo professorRepo) {
@@ -131,4 +130,5 @@ public class Lab06Application implements CommandLineRunner {
                        professor.getMatricula(),
                        nomeFaculdade);
         }
+    }
 }
