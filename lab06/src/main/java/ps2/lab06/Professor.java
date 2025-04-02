@@ -41,4 +41,11 @@ public class Professor {
     public int getMatricula() {
         return matricula;
     }
+    public void setFaculdade(Faculdade faculdade){
+        this.faculdade = faculdade;
+    }
+
+    public Faculdade getFaculdade(){
+        return faculdade;
+    }
 }
