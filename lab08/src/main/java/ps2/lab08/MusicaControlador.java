@@ -1,3 +1,5 @@
+package ps2.lab08;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -5,7 +7,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/musicas")
-public class MusicaController {
+public class MusicaControlador {
 
     @Autowired
     private MusicaRepo repo;

@@ -1,3 +1,5 @@
+package ps2.lab08;
+
 import jakarta.persistence.*;
 
 @Entity
